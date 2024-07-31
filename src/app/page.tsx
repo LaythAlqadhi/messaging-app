@@ -1,11 +1,9 @@
-import { ModeToggle } from "@/components/mode-toggle";
-import { LogOutButton } from "@/components/logout-button";
+import Home from './_components/home'
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-background">
-      <LogOutButton />
-      <ModeToggle />
+    <main>
+      <Home />
     </main>
-  );
+  )
 }

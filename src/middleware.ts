@@ -29,7 +29,7 @@ export default withAuth(
     const guestRoutes = ["auth", "signin", "register", "forgot-password"];
 
     // Shared routes (Routes that can be accessed by both guest and logged in users)
-    const sharedRoutes = ["shared-route"];
+    const sharedRoutes = ["shared-route", ""];
 
     // Private routes (All routes except guest and shared routes that can only be accessed by logged in users)
     const privateRoute = ![...guestRoutes, ...sharedRoutes].some((route) =>

@@ -31,9 +31,7 @@ const FormSchema = z.object({
 });
 
 export function RegisterForm() {
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -43,28 +41,34 @@ export function RegisterForm() {
     },
   });
 
+  const isLoading = form.formState.isLoading;
+
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     const { name, email, password } = data;
 
     try {
-      const response = await fetch("/api/auth/register", {
+      const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ name, email, password }),
       });
-      if (!response?.error) {
-        router.push("/login");
-        router.refresh();
+
+      if (res && res.status >= 400) {
+        throw new Error("Something went wrong!");
       }
 
-      if (!response.ok) {
-        throw new Error("Something went wrong.");
-      }
       toast({ title: "Registration Successful" });
     } catch (error: any) {
-      toast({ title: "Registration Failed", description: error.message });
+      toast({
+        variant: "destructive",
+        title: "Registration Failed",
+        description: error.message,
+      });
+    } finally {
+      router.push("/login");
+      router.refresh();
     }
   }
 
@@ -72,7 +76,7 @@ export function RegisterForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full max-w-sm space-y-4 text-start"
+        className="w-full space-y-4 text-start"
       >
         <FormField
           control={form.control}

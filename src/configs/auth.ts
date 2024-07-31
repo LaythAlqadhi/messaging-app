@@ -15,10 +15,6 @@ async function getUser(email: string): Promise<User | undefined> {
 }
 
 export const authOptions: NextAuthOptions = {
-  pages: {
-    signIn: "/login",
-    register: "/register",
-  },
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
@@ -65,7 +61,7 @@ export const authOptions: NextAuthOptions = {
 
   // ** Please refer to https://next-auth.js.org/configuration/options#pages for more `pages` options
   pages: {
-    signIn: "/login",
+    signIn: "/signin",
   },
 
   // ** Please refer to https://next-auth.js.org/configuration/options#callbacks for more `callbacks` options

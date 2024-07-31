@@ -23,11 +23,10 @@ export async function POST(request: Request) {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const response =
-      await sql`INSERT INTO users (name, email, password) VALUES (${name}, ${email}, ${hashedPassword})`;
-  } catch (e) {
-    console.log({ e });
-  }
+    await sql`INSERT INTO users (name, email, password) VALUES (${name}, ${email}, ${hashedPassword})`;
 
-  return NextResponse.json({ message: "success" });
+    return NextResponse.json({ message: "success" });
+  } catch (error) {
+    return NextResponse.json({ error: "failed" }, { status: 500 });
+  }
 }

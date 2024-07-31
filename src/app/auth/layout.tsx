@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="h-dvh flex flex-col items-center justify-between p-6 bg-background">
+    <main className="h-dvh flex flex-col items-center justify-between gap-6 p-4 bg-background">
       <div className="flex flex-col justify-center items-center gap-2 text-center">
         <Logo />
         <h1 className="text-xl text-foreground">Welcome to Messaging App</h1>
@@ -21,7 +21,9 @@ export default function RootLayout({
           The simple way to text right from your browser.
         </p>
       </div>
-      {children}
+      <div className="w-full border p-2 rounded-md">
+        {children}
+      </div>
     </main>
   );
 }

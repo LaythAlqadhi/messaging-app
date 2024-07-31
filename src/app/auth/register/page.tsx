@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 function Register() {
   return (
-    <section className="flex flex-col justify-center items-center gap-2 w-full">
-      <h2 className="text-foreground text-lg self-start">Register</h2>
+    <section className="flex flex-col justify-center items-center gap-2 w-full max-w-sm">
+      <h2 className="ml-1 text-foreground text-lg self-start">Register</h2>
       <RegisterForm />
     </section>
   );

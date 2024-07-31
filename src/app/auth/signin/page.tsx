@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 function Login() {
   return (
-    <section className="flex flex-col justify-center items-center gap-2 text-center w-full">
-      <h2 className="text-foreground text-lg self-start">Sign In</h2>
+    <section className="flex flex-col justify-center items-center gap-2 text-center w-full max-w-sm">
+      <h2 className="ml-1 text-foreground text-lg self-start">Sign In</h2>
       <LogInForm />
     </section>
   );

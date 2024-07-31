@@ -4,7 +4,7 @@ import Link from "next/link";
 import LogoIcon from "@/assets/images/svgs/logo.svg";
 
 export interface LogoProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  size: number | string;
+  size?: number | string;
 }
 
 const Logo = forwardRef<HTMLAnchorElement, LogoProps>(
